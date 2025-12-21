@@ -1,0 +1,92 @@
+You are a senior web developer.
+
+I want to build a WEB APPLICATION (browser-based website only).
+This is NOT a mobile app, NOT Android, NOT iOS.
+
+Project Name:
+Campus Connect
+
+Project Type:
+Web application (runs in a browser using localhost or deployed via GitHub-based workflows)
+
+Purpose:
+Students can report campus issues, and staff/admin can manage and resolve them.
+
+Tech Stack (WEB ONLY):
+- React
+- Next.js (Pages Router, not App Router)
+- TypeScript
+- Tailwind CSS
+- Firebase (ONLY as backend: Authentication + Firestore)
+- No Firebase Hosting
+- The website should run using:
+  - npm install
+  - npm run dev
+  - browser URL (localhost)
+
+User Roles:
+1. Student
+2. Staff
+3. Admin
+
+Authentication:
+- Firebase Email/Password authentication
+- Web-based login form
+- No mobile SDKs
+
+Pages Required (VERY IMPORTANT):
+
+1. Home Page (/)
+   - Project introduction
+   - Login / Register buttons
+
+2. Login Page (/login)
+   - Email & password login
+   - Redirect based on role
+
+3. Student Dashboard (/dashboard/student)
+   - Create a new issue
+   - View own reported issues
+   - Track issue status
+
+4. Staff Dashboard (/dashboard/staff)
+   - View assigned issues
+   - Update issue status (In Progress, Resolved)
+
+5. Admin Dashboard (/dashboard/admin)
+   - View all issues
+   - Assign issues to staff
+   - Change issue priority
+   - View analytics summary
+
+6. Analytics Page (/dashboard/analytics)
+   - Issue count by category
+   - Status overview
+   - Simple charts (optional)
+
+Core Features:
+- Issue reporting (title, description, category, priority)
+- Role-based dashboards
+- Real-time issue updates using Firestore
+- Secure Firestore rules
+- Proper auth-state handling before querying Firestore
+- Clean UI tables for issues
+- Date handling using standard JavaScript Date or date-fns
+
+Rules:
+- DO NOT generate mobile code
+- DO NOT use React Native, Expo, or Capacitor
+- DO NOT include Firebase Hosting
+- DO NOT assume deployment to Play Store or App Store
+- Code must be runnable directly from GitHub
+
+Expected Output:
+- Complete folder structure
+- Page components
+- Firestore data models
+- Example Firestore queries
+- Explanation of each major feature
+- Web-only implementation
+
+Goal:
+A clean, functional, browser-based website suitable for a college project and GitHub submission.
