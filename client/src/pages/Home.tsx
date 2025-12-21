@@ -17,29 +17,29 @@ export default function Home() {
         </nav>
       </header>
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-b from-blue-50 to-white dark:from-slate-900 dark:to-slate-950">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none font-heading text-slate-900 dark:text-white">
-                    Better Campus, <br />
-                    <span className="text-primary">Together.</span>
-                  </h1>
-                  <p className="max-w-[600px] text-slate-500 md:text-xl dark:text-slate-400">
-                    Report maintenance issues, track their status, and help us keep our campus safe and beautiful. Real-time updates for students and staff.
-                  </p>
+        <section className="w-full py-20 md:py-32 lg:py-40 bg-white border-b dark:bg-slate-950 dark:border-slate-900">
+          <div className="container px-4 md:px-6 max-w-4xl">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-primary dark:bg-primary/10 dark:border-primary/40">
+                  <span>Streamline Campus Operations</span>
                 </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Link href="/login">
-                    <Button size="lg" className="h-12 px-8">
-                      Get Started <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                  <Button variant="outline" size="lg" className="h-12 px-8">
-                    Learn More
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground font-heading">
+                  Issue Reporting and Resolution, Simplified
+                </h1>
+                <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+                  A centralized platform for students to report campus issues and for administrators to manage and resolve them efficiently. Real-time updates keep everyone informed.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Link href="/login">
+                  <Button size="lg" className="h-11 px-8 font-medium">
+                    Get Started <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
-                </div>
+                </Link>
+                <Button variant="outline" size="lg" className="h-11 px-8 font-medium">
+                  Learn More
+                </Button>
               </div>
             </div>
           </div>
