@@ -19,69 +19,73 @@ export default function StudentDashboard() {
 
   return (
     <Layout>
-      <div className="flex flex-col gap-6">
+      <div className="space-y-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
-            <h1 className="text-3xl font-bold font-heading tracking-tight">Student Dashboard</h1>
-            <p className="text-muted-foreground">Welcome back, {user?.name}. Here's an overview of your reports.</p>
+            <h1 className="text-3xl font-bold font-heading">My Reports</h1>
+            <p className="text-muted-foreground mt-1">Track your campus issue reports and their status</p>
           </div>
           <CreateIssueDialog />
         </div>
 
         <div className="grid gap-4 md:grid-cols-3">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Open Issues</CardTitle>
+          <Card className="border-l-4 border-l-blue-500">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Open</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{openIssues}</div>
+              <div className="text-3xl font-bold">{openIssues}</div>
             </CardContent>
           </Card>
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">In Progress</CardTitle>
+          <Card className="border-l-4 border-l-amber-500">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">In Progress</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{inProgressIssues}</div>
+              <div className="text-3xl font-bold">{inProgressIssues}</div>
             </CardContent>
           </Card>
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Resolved</CardTitle>
+          <Card className="border-l-4 border-l-green-500">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Resolved</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{resolvedIssues}</div>
+              <div className="text-3xl font-bold">{resolvedIssues}</div>
             </CardContent>
           </Card>
         </div>
 
-        <Tabs defaultValue="grid" className="w-full">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-semibold">My Reported Issues</h2>
-            <TabsList>
-              <TabsTrigger value="grid"><LayoutGrid className="h-4 w-4" /></TabsTrigger>
-              <TabsTrigger value="list"><List className="h-4 w-4" /></TabsTrigger>
-            </TabsList>
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-semibold">Your Issues</h2>
+            <Tabs defaultValue="grid" className="w-auto">
+              <TabsList className="grid w-auto grid-cols-2">
+                <TabsTrigger value="grid" size="sm"><LayoutGrid className="h-4 w-4" /></TabsTrigger>
+                <TabsTrigger value="list" size="sm"><List className="h-4 w-4" /></TabsTrigger>
+              </TabsList>
+            </Tabs>
           </div>
-          
-          <TabsContent value="grid" className="mt-0">
-             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+
+          <Tabs defaultValue="grid" className="w-full mt-0">
+            <TabsContent value="grid" className="mt-0">
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {myIssues.length === 0 ? (
-                  <div className="col-span-full text-center py-12 text-muted-foreground bg-card rounded-lg border border-dashed">
-                    You haven't reported any issues yet.
+                  <div className="col-span-full text-center py-12 text-muted-foreground">
+                    No issues reported yet
                   </div>
                 ) : (
                   myIssues.map(issue => (
                     <IssueCard key={issue.id} issue={issue} />
                   ))
                 )}
-             </div>
-          </TabsContent>
-          
-          <TabsContent value="list" className="mt-0">
-             <IssueTable issues={myIssues} currentUserRole="student" />
-          </TabsContent>
-        </Tabs>
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="list" className="mt-0">
+              <IssueTable issues={myIssues} currentUserRole="student" />
+            </TabsContent>
+          </Tabs>
+        </div>
       </div>
     </Layout>
   );

@@ -1,97 +1,130 @@
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { GraduationCap, ArrowRight, CheckCircle2, ShieldCheck, Clock } from 'lucide-react';
+import { GraduationCap, ArrowRight, CheckCircle2, Shield, Zap } from 'lucide-react';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="px-4 lg:px-6 h-14 flex items-center border-b">
-        <Link href="/" className="flex items-center justify-center">
-          <GraduationCap className="h-6 w-6 mr-2 text-primary" />
-          <span className="font-bold text-xl">Campus Connect</span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link href="/login">
-            <Button>Login</Button>
+      <header className="sticky top-0 z-50 bg-white border-b border-border dark:bg-slate-950 dark:border-slate-800">
+        <div className="container h-14 flex items-center justify-between px-4 md:px-6">
+          <Link href="/" className="flex items-center gap-2">
+            <GraduationCap className="h-5 w-5 text-primary" />
+            <span className="font-semibold text-base tracking-tight">Campus Connect</span>
           </Link>
-        </nav>
+          <nav className="flex gap-4">
+            <Link href="/login">
+              <Button variant="default" size="sm">Sign In</Button>
+            </Link>
+          </nav>
+        </div>
       </header>
+
       <main className="flex-1">
-        <section className="w-full py-20 md:py-32 lg:py-40 bg-white border-b dark:bg-slate-950 dark:border-slate-900">
-          <div className="container px-4 md:px-6 max-w-4xl">
+        {/* Hero */}
+        <section className="w-full py-24 md:py-32 lg:py-40 border-b border-border bg-white dark:bg-slate-950 dark:border-slate-800">
+          <div className="container px-4 md:px-6 max-w-5xl">
             <div className="space-y-8">
-              <div className="space-y-4">
-                <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-primary dark:bg-primary/10 dark:border-primary/40">
-                  <span>Streamline Campus Operations</span>
+              <div className="space-y-6">
+                <div>
+                  <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground font-heading leading-tight">
+                    Efficient Campus Issue Management
+                  </h1>
+                  <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+                    Centralized platform for reporting and resolving campus maintenance issues. Real-time tracking keeps students informed and staff organized.
+                  </p>
                 </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground font-heading">
-                  Issue Reporting and Resolution, Simplified
-                </h1>
-                <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-                  A centralized platform for students to report campus issues and for administrators to manage and resolve them efficiently. Real-time updates keep everyone informed.
-                </p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-3 pt-4">
                 <Link href="/login">
-                  <Button size="lg" className="h-11 px-8 font-medium">
-                    Get Started <ArrowRight className="ml-2 h-4 w-4" />
+                  <Button size="lg" className="h-11 px-8">
+                    Access Platform <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
-                <Button variant="outline" size="lg" className="h-11 px-8 font-medium">
+                <Button variant="outline" size="lg" className="h-11 px-8">
                   Learn More
                 </Button>
               </div>
             </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-slate-50 dark:bg-slate-900/50">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-heading">How It Works</h2>
-                <p className="max-w-[900px] text-slate-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-slate-400">
-                  Simple, transparent, and efficient issue tracking for everyone on campus.
-                </p>
-              </div>
+
+        {/* Features */}
+        <section className="w-full py-20 md:py-28 border-b border-border bg-slate-50 dark:bg-slate-900/30 dark:border-slate-800">
+          <div className="container px-4 md:px-6 max-w-5xl">
+            <div className="mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-heading">
+                How It Works
+              </h2>
+              <p className="mt-2 text-muted-foreground">
+                Simple workflow designed for your campus community
+              </p>
             </div>
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3">
-              <div className="flex flex-col items-center space-y-4 text-center p-6 bg-white rounded-lg shadow-sm dark:bg-slate-800">
-                <div className="p-3 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/20">
-                  <CheckCircle2 className="h-8 w-8" />
+            <div className="grid gap-8 md:grid-cols-3">
+              <div className="space-y-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary">
+                  <CheckCircle2 className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-bold">Report</h3>
-                <p className="text-sm text-slate-500 dark:text-slate-400">
-                  Easily submit issues with photos and location details directly from your device.
-                </p>
+                <div>
+                  <h3 className="font-semibold text-lg">Report Issues</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    Students submit detailed issue reports with location, category, and priority levels.
+                  </p>
+                </div>
               </div>
-              <div className="flex flex-col items-center space-y-4 text-center p-6 bg-white rounded-lg shadow-sm dark:bg-slate-800">
-                <div className="p-3 rounded-full bg-teal-100 text-teal-600 dark:bg-teal-900/20">
-                  <ShieldCheck className="h-8 w-8" />
+              <div className="space-y-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary">
+                  <Zap className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-bold">Track</h3>
-                <p className="text-sm text-slate-500 dark:text-slate-400">
-                  Follow the progress of your report in real-time as staff pick it up.
-                </p>
+                <div>
+                  <h3 className="font-semibold text-lg">Track Progress</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    Real-time status updates keep everyone informed throughout the resolution process.
+                  </p>
+                </div>
               </div>
-              <div className="flex flex-col items-center space-y-4 text-center p-6 bg-white rounded-lg shadow-sm dark:bg-slate-800">
-                <div className="p-3 rounded-full bg-indigo-100 text-indigo-600 dark:bg-indigo-900/20">
-                  <Clock className="h-8 w-8" />
+              <div className="space-y-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary">
+                  <Shield className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-bold">Resolve</h3>
-                <p className="text-sm text-slate-500 dark:text-slate-400">
-                  Staff resolve issues efficiently, keeping the campus running smoothly.
-                </p>
+                <div>
+                  <h3 className="font-semibold text-lg">Manage Efficiently</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    Staff and admins assign, prioritize, and resolve issues with a unified dashboard.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </section>
+
+        {/* CTA */}
+        <section className="w-full py-20 md:py-28 bg-white dark:bg-slate-950">
+          <div className="container px-4 md:px-6 max-w-3xl text-center space-y-6">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-heading">
+              Ready to streamline campus operations?
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Join students and staff in creating a more responsive campus community.
+            </p>
+            <div className="pt-4">
+              <Link href="/login">
+                <Button size="lg" className="h-11 px-8">
+                  Get Started Now
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-slate-500 dark:text-slate-400">© 2024 Campus Connect. All rights reserved.</p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link href="#"><a className="text-xs hover:underline underline-offset-4">Terms of Service</a></Link>
-          <Link href="#"><a className="text-xs hover:underline underline-offset-4">Privacy</a></Link>
-        </nav>
+
+      <footer className="border-t border-border bg-slate-50 dark:bg-slate-900/50 dark:border-slate-800">
+        <div className="container px-4 md:px-6 h-16 flex items-center justify-between text-sm text-muted-foreground">
+          <p>© 2024 Campus Connect. All rights reserved.</p>
+          <nav className="flex gap-6">
+            <Link href="#"><a className="hover:text-foreground transition-colors">Terms</a></Link>
+            <Link href="#"><a className="hover:text-foreground transition-colors">Privacy</a></Link>
+          </nav>
+        </div>
       </footer>
     </div>
   );

@@ -9,39 +9,49 @@ export default function StaffDashboard() {
   // Issues assigned to this staff member
   const assignedIssues = issues.filter(issue => issue.assignedTo === user?.id);
   const pendingIssues = assignedIssues.filter(i => i.status !== 'resolved');
+  const resolvedIssues = assignedIssues.filter(i => i.status === 'resolved');
 
   return (
     <Layout>
-      <div className="flex flex-col gap-6">
+      <div className="space-y-6">
         <div>
-          <h1 className="text-3xl font-bold font-heading tracking-tight">Staff Dashboard</h1>
-          <p className="text-muted-foreground">Manage your assigned tasks and update statuses.</p>
+          <h1 className="text-3xl font-bold font-heading">Assigned Tasks</h1>
+          <p className="text-muted-foreground mt-1">Manage your work queue and update issue status</p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          <Card className="bg-primary text-primary-foreground">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-primary-foreground/90">Pending Tasks</CardTitle>
+        <div className="grid gap-4 md:grid-cols-3">
+          <Card className="border-l-4 border-l-red-500">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Pending</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold">{pendingIssues.length}</div>
-              <p className="text-xs text-primary-foreground/70 mt-1">Issues requiring attention</p>
+              <p className="text-xs text-muted-foreground mt-1">Needs your attention</p>
             </CardContent>
           </Card>
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Assigned</CardTitle>
+          <Card className="border-l-4 border-l-green-500">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Resolved</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold">{resolvedIssues.length}</div>
+              <p className="text-xs text-muted-foreground mt-1">Completed</p>
+            </CardContent>
+          </Card>
+          <Card className="border-l-4 border-l-blue-500">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Total Assigned</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold">{assignedIssues.length}</div>
-              <p className="text-xs text-muted-foreground mt-1">Lifetime assignments</p>
+              <p className="text-xs text-muted-foreground mt-1">All time</p>
             </CardContent>
           </Card>
         </div>
 
         <div className="space-y-4">
-           <h2 className="text-xl font-semibold">Assigned Issues</h2>
-           <IssueTable issues={assignedIssues} currentUserRole="staff" />
+          <h2 className="text-xl font-semibold">All Assigned Issues</h2>
+          <IssueTable issues={assignedIssues} currentUserRole="staff" />
         </div>
       </div>
     </Layout>
