@@ -41,26 +41,6 @@ export default function Home() {
                   </Button>
                 </div>
               </div>
-              <div className="flex items-center justify-center">
-                <div className="relative w-full h-[350px] bg-white rounded-xl shadow-2xl border p-6 flex flex-col gap-4 dark:bg-slate-900 transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                  <div className="flex items-center gap-4 border-b pb-4">
-                    <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">AS</div>
-                    <div>
-                      <div className="font-semibold">Alice Student</div>
-                      <div className="text-xs text-muted-foreground">2 hours ago</div>
-                    </div>
-                    <div className="ml-auto px-2 py-1 bg-amber-100 text-amber-700 text-xs rounded-full">In Progress</div>
-                  </div>
-                  <div className="space-y-2">
-                    <h3 className="font-semibold text-lg">Broken Projector in Room 302</h3>
-                    <p className="text-sm text-muted-foreground">The projector keeps flickering and turning off during lectures. It's making it hard to follow the class.</p>
-                  </div>
-                  <div className="mt-auto flex gap-2">
-                     <div className="bg-slate-100 px-3 py-1 rounded text-xs font-medium dark:bg-slate-800">IT Support</div>
-                     <div className="bg-red-50 text-red-600 px-3 py-1 rounded text-xs font-medium dark:bg-red-900/20">High Priority</div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>
