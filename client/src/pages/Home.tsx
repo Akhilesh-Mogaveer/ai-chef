@@ -45,26 +45,18 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Hero Image with Stat */}
-              <div className="relative flex items-center justify-center">
-                <div className="relative w-full aspect-square max-w-sm">
-                  <img 
-                    src="https://images.unsplash.com/photo-1564629238117-45e9d194e19f?w=500&h=600&fit=crop"
-                    alt="Campus Building"
-                    className="w-full h-full object-cover rounded-2xl shadow-2xl"
-                  />
-                  {/* Stat Badge */}
-                  <div className="absolute bottom-6 left-6 bg-white dark:bg-slate-900 rounded-xl p-4 shadow-lg border border-slate-200 dark:border-slate-700">
-                    <div className="flex items-center gap-3">
-                      <div className="flex-shrink-0">
-                        <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-                          <span className="text-xl font-bold text-green-600 dark:text-green-400">95%</span>
-                        </div>
+              {/* Stat Badge */}
+              <div className="flex items-center justify-center">
+                <div className="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
+                  <div className="flex items-center gap-4">
+                    <div className="flex-shrink-0">
+                      <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                        <span className="text-3xl font-bold text-green-600 dark:text-green-400">95%</span>
                       </div>
-                      <div>
-                        <p className="text-sm font-semibold text-foreground">Issues Resolved</p>
-                        <p className="text-xs text-muted-foreground">Campus community</p>
-                      </div>
+                    </div>
+                    <div>
+                      <p className="text-base font-semibold text-foreground">Issues Resolved</p>
+                      <p className="text-sm text-muted-foreground">Campus community</p>
                     </div>
                   </div>
                 </div>
