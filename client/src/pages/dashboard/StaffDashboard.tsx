@@ -4,7 +4,7 @@ import { IssueTable } from '@/components/issues/IssueTable';
 import { useStore } from '@/lib/store';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { FileText, ListChecks, CheckCircle, AlertCircle } from 'lucide-react';
+import { FileText, CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function StaffDashboard() {
   const { user, issues } = useStore();
@@ -25,7 +25,7 @@ export default function StaffDashboard() {
           <p className="text-muted-foreground mt-1">Report issues and manage your assigned tasks</p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-3">
           <Card>
             <CardHeader className="pb-3 flex flex-row items-center justify-between space-y-0">
               <CardTitle className="text-sm font-medium text-muted-foreground">Reported</CardTitle>
@@ -33,15 +33,6 @@ export default function StaffDashboard() {
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold">{mySubmitted}</div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-3 flex flex-row items-center justify-between space-y-0">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Assigned</CardTitle>
-              <ListChecks className="h-4 w-4 text-slate-400" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold">{assignedIssues.length}</div>
             </CardContent>
           </Card>
           <Card>
