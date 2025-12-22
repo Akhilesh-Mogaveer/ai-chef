@@ -116,44 +116,63 @@ export default function Home() {
 
         {/* Built for Everyone */}
         <section className="w-full py-20 md:py-28 border-b border-border bg-white dark:bg-slate-950 dark:border-slate-800">
-          <div className="container px-4 md:px-6 max-w-5xl">
-            <div className="mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-heading">
-                Built for Everyone
-              </h2>
-            </div>
-            <div className="grid gap-8 md:grid-cols-3">
-              <div className="space-y-4 p-8 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800">
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30">
-                  <BookOpen className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg">Students</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                    Report campus issues and track their status in real-time with AI-powered categorization.
-                  </p>
-                </div>
+          <div className="container px-4 md:px-6 max-w-6xl">
+            <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
+              {/* Image */}
+              <div>
+                <img 
+                  src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500&h=400&fit=crop"
+                  alt="Campus Scene"
+                  className="w-full h-auto rounded-2xl shadow-xl"
+                />
               </div>
-              <div className="space-y-4 p-8 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800">
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/30">
-                  <Users className="h-5 w-5 text-amber-600 dark:text-amber-400" />
-                </div>
+
+              {/* Content */}
+              <div className="space-y-8">
                 <div>
-                  <h3 className="font-semibold text-lg">Staff</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                    Report and track issues, manage maintenance operations with priority-based workflow.
-                  </p>
+                  <p className="text-sm font-semibold text-muted-foreground uppercase tracking-widest">USER ROLES</p>
+                  <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-heading mt-2">
+                    Built for Everyone
+                  </h2>
                 </div>
-              </div>
-              <div className="space-y-4 p-8 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800">
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30">
-                  <Lock className="h-5 w-5 text-red-600 dark:text-red-400" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg">Administrators</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                    Monitor all campus issues, analyze trends, and maintain system oversight.
-                  </p>
+
+                {/* Roles List */}
+                <div className="space-y-6">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-3">
+                      <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30">
+                        <BookOpen className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                      </div>
+                      <h3 className="font-semibold text-lg">Students</h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Create and track issues, view status updates, and contribute to making the campus better.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-3">
+                      <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/30">
+                        <Users className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <h3 className="font-semibold text-lg">Staff</h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      View assigned issues, update progress status, and mark issues as resolved upon completion.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-3">
+                      <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30">
+                        <Lock className="h-5 w-5 text-red-600 dark:text-red-400" />
+                      </div>
+                      <h3 className="font-semibold text-lg">Administrators</h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Full oversight with analytics, staff assignment, priority management, and system administration.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
