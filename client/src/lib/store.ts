@@ -42,6 +42,7 @@ interface AppState {
   updateIssueStatus: (id: string, status: IssueStatus) => void;
   assignIssue: (id: string, staffId: string) => void;
   updateIssuePriority: (id: string, priority: IssuePriority) => void;
+  updateUserProfile: (updates: { name?: string; email?: string; avatar?: string }) => void;
 }
 
 // Seed Data
@@ -161,4 +162,13 @@ export const useStore = create<AppState>((set) => ({
         : issue
     )
   })),
+
+  updateUserProfile: (updates) => set((state) => {
+    if (!state.user) return state;
+    const updatedUser = { ...state.user, ...updates };
+    return {
+      user: updatedUser,
+      users: state.users.map(u => u.id === state.user?.id ? updatedUser : u),
+    };
+  }),
 }));

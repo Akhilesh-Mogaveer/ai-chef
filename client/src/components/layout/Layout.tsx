@@ -5,6 +5,7 @@ import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Menu, LogOut } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Link } from 'wouter';
 
 interface LayoutProps {
   children: ReactNode;
@@ -66,17 +67,19 @@ export function Layout({ children }: LayoutProps) {
 
           {user && (
             <div className="ml-auto flex items-center gap-4">
-              <div className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer" data-testid="profile-section">
-                <img 
-                  src={user.avatar} 
-                  alt="Avatar" 
-                  className="h-8 w-8 rounded-full"
-                />
-                <div className="flex flex-col overflow-hidden text-right hidden sm:block">
-                  <span className="truncate font-medium text-sm">{user.name}</span>
-                  <span className="truncate text-xs text-muted-foreground capitalize">{user.role}</span>
-                </div>
-              </div>
+              <Link href="/profile">
+                <a className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer" data-testid="profile-section">
+                  <img 
+                    src={user.avatar} 
+                    alt="Avatar" 
+                    className="h-8 w-8 rounded-full"
+                  />
+                  <div className="flex flex-col overflow-hidden text-right hidden sm:block">
+                    <span className="truncate font-medium text-sm">{user.name}</span>
+                    <span className="truncate text-xs text-muted-foreground capitalize">{user.role}</span>
+                  </div>
+                </a>
+              </Link>
               <Button 
                 variant="ghost" 
                 size="icon"
