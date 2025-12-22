@@ -31,8 +31,7 @@ interface IssueTableProps {
 }
 
 export function IssueTable({ issues, currentUserRole }: IssueTableProps) {
-  const { updateIssueStatus, assignIssue, updateIssuePriority, users, user: currentUser } = useStore();
-  const staffMembers = users.filter(u => u.role === 'staff');
+  const { updateIssueStatus, updateIssuePriority, users, user: currentUser } = useStore();
 
   return (
     <div className="rounded-md border bg-card">
@@ -43,7 +42,7 @@ export function IssueTable({ issues, currentUserRole }: IssueTableProps) {
             <TableHead>Category</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Priority</TableHead>
-            <TableHead>Assigned To</TableHead>
+            <TableHead>Reported By</TableHead>
             <TableHead className="text-right">Date</TableHead>
             <TableHead className="w-[50px]"></TableHead>
           </TableRow>
@@ -57,7 +56,7 @@ export function IssueTable({ issues, currentUserRole }: IssueTableProps) {
              </TableRow>
           ) : (
             issues.map((issue) => {
-              const assignedUser = users.find(u => u.id === issue.assignedTo);
+              const reportedByUser = users.find(u => u.id === issue.userId);
               
               return (
                 <TableRow key={issue.id}>
@@ -77,13 +76,13 @@ export function IssueTable({ issues, currentUserRole }: IssueTableProps) {
                     <PriorityBadge priority={issue.priority} />
                   </TableCell>
                   <TableCell>
-                    {assignedUser ? (
+                    {reportedByUser ? (
                       <div className="flex items-center gap-2">
-                         <img src={assignedUser.avatar} className="h-5 w-5 rounded-full" alt="" />
-                         <span className="text-sm">{assignedUser.name}</span>
+                         <img src={reportedByUser.avatar} className="h-5 w-5 rounded-full" alt="" />
+                         <span className="text-sm">{reportedByUser.name}</span>
                       </div>
                     ) : (
-                      <span className="text-xs text-muted-foreground italic">Unassigned</span>
+                      <span className="text-xs text-muted-foreground italic">Unknown</span>
                     )}
                   </TableCell>
                   <TableCell className="text-right text-xs text-muted-foreground">
@@ -124,23 +123,6 @@ export function IssueTable({ issues, currentUserRole }: IssueTableProps) {
                         
                         {currentUserRole === 'admin' && (
                           <>
-                            <DropdownMenuSub>
-                              <DropdownMenuSubTrigger>Assign To</DropdownMenuSubTrigger>
-                              <DropdownMenuSubContent>
-                                <DropdownMenuRadioGroup 
-                                  value={issue.assignedTo || ''}
-                                  onValueChange={(v) => assignIssue(issue.id, v)}
-                                >
-                                  <DropdownMenuRadioItem value="">Unassigned</DropdownMenuRadioItem>
-                                  {staffMembers.map(staff => (
-                                    <DropdownMenuRadioItem key={staff.id} value={staff.id}>
-                                      {staff.name}
-                                    </DropdownMenuRadioItem>
-                                  ))}
-                                </DropdownMenuRadioGroup>
-                              </DropdownMenuSubContent>
-                            </DropdownMenuSub>
-                            
                             <DropdownMenuSub>
                               <DropdownMenuSubTrigger>Priority</DropdownMenuSubTrigger>
                               <DropdownMenuSubContent>

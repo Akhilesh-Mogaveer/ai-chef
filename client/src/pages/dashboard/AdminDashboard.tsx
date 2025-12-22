@@ -5,7 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AlertCircle, CheckCircle, Clock, FileText } from 'lucide-react';
 
 export default function AdminDashboard() {
-  const { issues } = useStore();
+  const { issues, users } = useStore();
+  
+  const studentIssues = issues.filter(i => users.find(u => u.id === i.userId && u.role === 'student'));
+  const staffIssues = issues.filter(i => users.find(u => u.id === i.userId && u.role === 'staff'));
   
   const openIssues = issues.filter(i => i.status === 'open').length;
   const inProgressIssues = issues.filter(i => i.status === 'in-progress').length;
@@ -62,12 +65,22 @@ export default function AdminDashboard() {
           </Card>
         </div>
 
-        <div className="space-y-4">
-          <div>
-            <h2 className="text-xl font-semibold">All Campus Issues</h2>
-            <p className="text-sm text-muted-foreground mt-1">View all issues reported by students and staff members</p>
+        <div className="space-y-6">
+          <div className="space-y-4">
+            <div>
+              <h2 className="text-xl font-semibold">Issues Reported by Students</h2>
+              <p className="text-sm text-muted-foreground mt-1">Campus issues submitted by students</p>
+            </div>
+            <IssueTable issues={studentIssues} currentUserRole="admin" />
           </div>
-          <IssueTable issues={issues} currentUserRole="admin" />
+
+          <div className="space-y-4">
+            <div>
+              <h2 className="text-xl font-semibold">Issues Reported by Staff</h2>
+              <p className="text-sm text-muted-foreground mt-1">Campus issues submitted by staff members</p>
+            </div>
+            <IssueTable issues={staffIssues} currentUserRole="admin" />
+          </div>
         </div>
       </div>
     </Layout>
