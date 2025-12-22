@@ -2,62 +2,71 @@ import { Layout } from '@/components/layout/Layout';
 import { IssueTable } from '@/components/issues/IssueTable';
 import { useStore } from '@/lib/store';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { AlertCircle, CheckCircle, Clock } from 'lucide-react';
+import { AlertCircle, CheckCircle, Clock, FileText } from 'lucide-react';
 
 export default function AdminDashboard() {
-  const { issues, users } = useStore();
+  const { issues } = useStore();
   
   const openIssues = issues.filter(i => i.status === 'open').length;
   const inProgressIssues = issues.filter(i => i.status === 'in-progress').length;
   const resolvedIssues = issues.filter(i => i.status === 'resolved').length;
-  const unassignedIssues = issues.filter(i => !i.assignedTo && i.status !== 'resolved').length;
 
   return (
     <Layout>
       <div className="space-y-6">
         <div>
           <h1 className="text-3xl font-bold font-heading">System Overview</h1>
-          <p className="text-muted-foreground mt-1">Monitor all campus issues and manage operations</p>
+          <p className="text-muted-foreground mt-1">Monitor all campus issues from students and staff</p>
         </div>
 
         <div className="grid gap-4 md:grid-cols-4">
-          <Card className="border-l-4 border-l-slate-400">
-            <CardHeader className="pb-3">
+          <Card>
+            <CardHeader className="pb-3 flex flex-row items-center justify-between space-y-0">
               <CardTitle className="text-sm font-medium text-muted-foreground">Total Issues</CardTitle>
+              <FileText className="h-4 w-4 text-slate-400" />
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold">{issues.length}</div>
+              <p className="text-xs text-muted-foreground mt-1">All reported issues</p>
             </CardContent>
           </Card>
-          <Card className="border-l-4 border-l-blue-500">
-            <CardHeader className="pb-3">
+          <Card>
+            <CardHeader className="pb-3 flex flex-row items-center justify-between space-y-0">
               <CardTitle className="text-sm font-medium text-muted-foreground">Open</CardTitle>
+              <AlertCircle className="h-4 w-4 text-blue-500" />
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold">{openIssues}</div>
+              <p className="text-xs text-muted-foreground mt-1">Awaiting action</p>
             </CardContent>
           </Card>
-          <Card className="border-l-4 border-l-amber-500">
-            <CardHeader className="pb-3">
+          <Card>
+            <CardHeader className="pb-3 flex flex-row items-center justify-between space-y-0">
               <CardTitle className="text-sm font-medium text-muted-foreground">In Progress</CardTitle>
+              <Clock className="h-4 w-4 text-amber-500" />
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold">{inProgressIssues}</div>
+              <p className="text-xs text-muted-foreground mt-1">Being handled</p>
             </CardContent>
           </Card>
-          <Card className="border-l-4 border-l-red-500">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Unassigned</CardTitle>
+          <Card>
+            <CardHeader className="pb-3 flex flex-row items-center justify-between space-y-0">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Resolved</CardTitle>
+              <CheckCircle className="h-4 w-4 text-green-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold">{unassignedIssues}</div>
-              <p className="text-xs text-muted-foreground mt-1">Needs assignment</p>
+              <div className="text-3xl font-bold">{resolvedIssues}</div>
+              <p className="text-xs text-muted-foreground mt-1">Completed</p>
             </CardContent>
           </Card>
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold">All Campus Issues</h2>
+          <div>
+            <h2 className="text-xl font-semibold">All Campus Issues</h2>
+            <p className="text-sm text-muted-foreground mt-1">View all issues reported by students and staff members</p>
+          </div>
           <IssueTable issues={issues} currentUserRole="admin" />
         </div>
       </div>

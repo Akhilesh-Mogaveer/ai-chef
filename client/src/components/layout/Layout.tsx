@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { Sidebar } from './Sidebar';
 import { useStore } from '@/lib/store';
 import { useLocation } from 'wouter';
@@ -12,18 +12,31 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   const { user, logout } = useStore();
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
 
   // If no user and not on public pages, show children (which will likely handle redirect or be the login page)
   const isPublicPage = location === '/' || location === '/login';
 
+  // Redirect to login if user logs out
+  useEffect(() => {
+    if (!user && !isPublicPage) {
+      setLocation('/login');
+    }
+  }, [user, isPublicPage, setLocation]);
+
   if (!user && !isPublicPage) {
-     // Ideally, we'd redirect here, but let the pages handle auth checks for cleaner logic
+     // Will redirect via useEffect above
+     return <main className="min-h-screen bg-background">{children}</main>;
   }
 
   if (isPublicPage) {
     return <main className="min-h-screen bg-background">{children}</main>;
   }
+
+  const handleLogout = () => {
+    logout();
+    setLocation('/login');
+  };
 
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
@@ -53,7 +66,7 @@ export function Layout({ children }: LayoutProps) {
 
           {user && (
             <div className="ml-auto flex items-center gap-4">
-              <div className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+              <div className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer" data-testid="profile-section">
                 <img 
                   src={user.avatar} 
                   alt="Avatar" 
@@ -67,8 +80,9 @@ export function Layout({ children }: LayoutProps) {
               <Button 
                 variant="ghost" 
                 size="icon"
-                onClick={() => logout()}
+                onClick={handleLogout}
                 className="hover:bg-slate-100 dark:hover:bg-slate-800"
+                data-testid="button-logout"
               >
                 <LogOut className="h-4 w-4" />
                 <span className="sr-only">Sign out</span>
