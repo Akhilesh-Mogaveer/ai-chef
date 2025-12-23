@@ -5,7 +5,7 @@ import { Layout } from '@/components/layout/Layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { MapPin, AlertCircle } from 'lucide-react';
 
-const GOOGLE_MAPS_API_KEY = 'AIzaSyDemoKeyForCampusConnect'; // Demo key - replace with real key
+const GOOGLE_MAPS_API_KEY = 'AIzaSyCGc5EyLZHVvGG_N5wuldrVFG3ZNXiaztQ';
 
 const mapContainerStyle = {
   width: '100%',
