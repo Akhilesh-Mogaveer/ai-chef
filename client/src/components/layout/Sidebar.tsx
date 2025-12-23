@@ -6,6 +6,7 @@ import {
   ListTodo, 
   BarChart3, 
   GraduationCap,
+  MapPin,
 } from 'lucide-react';
 
 export function Sidebar() {
@@ -38,6 +39,12 @@ export function Sidebar() {
       label: 'Analytics', 
       icon: BarChart3, 
       roles: ['admin'] 
+    },
+    { 
+      href: '/dashboard/map', 
+      label: 'Issue Map', 
+      icon: MapPin, 
+      roles: ['admin', 'staff', 'student'] 
     },
   ];
 
