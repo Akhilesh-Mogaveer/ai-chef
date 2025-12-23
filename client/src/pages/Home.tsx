@@ -56,7 +56,7 @@ export default function Home() {
               </div>
 
               {/* Stat Card */}
-              <div className="flex items-center justify-center">
+              {/* <div className="flex items-center justify-center">
                 <div className="bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-900/50 rounded-2xl p-8 shadow-2xl border border-slate-200/50 dark:border-slate-800/50 backdrop-blur-sm">
                   <div className="flex items-center gap-6">
                     <div className="flex-shrink-0">
@@ -70,7 +70,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
