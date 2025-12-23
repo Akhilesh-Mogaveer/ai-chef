@@ -18,6 +18,7 @@ import { useStore, IssueCategory, IssuePriority } from '@/lib/store';
 import { useToast } from '@/hooks/use-toast';
 import { categorizeIssue } from '@/lib/aiCategorizer';
 import { Badge } from '@/components/ui/badge';
+import { AIAnalysisCard } from './AIAnalysisCard';
 import { Lightbulb, Send } from 'lucide-react';
 
 const formSchema = z.object({
@@ -31,6 +32,7 @@ export function ReportIssueForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [categorization, setCategorization] = useState<{ category: IssueCategory; priority: IssuePriority } | null>(null);
+  const [showAIAnalysis, setShowAIAnalysis] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
