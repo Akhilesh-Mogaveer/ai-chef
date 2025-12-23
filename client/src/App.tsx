@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -13,40 +12,8 @@ import StaffDashboard from "@/pages/dashboard/StaffDashboard";
 import AdminDashboard from "@/pages/dashboard/AdminDashboard";
 import Analytics from "@/pages/dashboard/Analytics";
 import IssueMap from "@/pages/dashboard/IssueMap";
-import { useLocation } from "wouter";
-
-declare global {
-  interface Window {
-    dataLayer: any[];
-    gtag: (...args: any[]) => void;
-  }
-}
-
-// Initialize Google Analytics
-function initializeAnalytics() {
-  if (typeof window !== 'undefined') {
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function(...args: any[]) {
-      window.dataLayer.push(args);
-    };
-    window.gtag('js', new Date());
-    window.gtag('config', 'G-73XH26Y7SH', {
-      page_path: window.location.pathname,
-    });
-  }
-}
 
 function Router() {
-  const [location] = useLocation();
-
-  useEffect(() => {
-    // Track page view with Google Analytics
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('config', 'G-73XH26Y7SH', {
-        page_path: location,
-      });
-    }
-  }, [location]);
 
   return (
     <Switch>
@@ -64,10 +31,6 @@ function Router() {
 }
 
 function App() {
-  useEffect(() => {
-    initializeAnalytics();
-  }, []);
-
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
