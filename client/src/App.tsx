@@ -30,7 +30,7 @@ function initializeAnalytics() {
       window.dataLayer.push(args);
     };
     window.gtag('js', new Date());
-    window.gtag('config', 'G-XXXXXXXXXXXXX', {
+    window.gtag('config', 'G-73XH26Y7SH', {
       page_path: window.location.pathname,
     });
   }
@@ -42,7 +42,7 @@ function Router() {
   useEffect(() => {
     // Track page view with Google Analytics
     if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('config', 'G-XXXXXXXXXXXXX', {
+      window.gtag('config', 'G-73XH26Y7SH', {
         page_path: location,
       });
     }
